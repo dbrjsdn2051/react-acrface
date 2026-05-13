@@ -4,17 +4,14 @@ const path = require("path");
 let mainWindow;
 
 function createWindow() {
-    const isMac = process.platform === "darwin";
     mainWindow = new BrowserWindow({
         width: 1600,
         height: 1000,
         minWidth: 1400,
         minHeight: 900,
-        // HD360 정합: mac → hiddenInset (traffic light 만 보임), 좌측 80px 자리 비움
-        //          Windows/Linux → frame:false (시스템 버튼도 React 가 그림)
-        frame: isMac ? undefined : false,
-        titleBarStyle: isMac ? "hiddenInset" : "hidden",
-        trafficLightPosition: isMac ? { x: 12, y: 14 } : undefined,
+        frame: false,
+        titleBarStyle: "hidden",
+        trafficLightPosition: {x: -100, y: -100},
         backgroundColor: "#000000",
         webPreferences: {
             nodeIntegration: false,
